@@ -1,15 +1,18 @@
 package com.assignment3.model;
 
 public class FresherCandidate extends Candidate{
-    private String graduateTime;
+    private int graduateTime;
     private String rankOfGraduation;
     private String education;
+
+    public FresherCandidate() {
+    }
 
     public FresherCandidate(int id, String firstName,
                             String lastName, int birthDate,
                             String address, String phone,
-                            String email, String candidateType,
-                            String graduateTime, String
+                            String email, int candidateType,
+                            int graduateTime, String
                                     rankOfGraduation, String education) {
         super(id, firstName, lastName, birthDate, address, phone, email, candidateType);
         this.graduateTime = graduateTime;
@@ -18,11 +21,11 @@ public class FresherCandidate extends Candidate{
 
     }
 
-    public String getGraduateTime() {
+    public int getGraduateTime() {
         return graduateTime;
     }
 
-    public void setGraduateTime(String graduateTime) {
+    public void setGraduateTime(int graduateTime) {
         this.graduateTime = graduateTime;
     }
 

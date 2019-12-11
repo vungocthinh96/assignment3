@@ -8,12 +8,15 @@ public class Candidate {
     private String address;
     private String phone;
     private String email;
-    private String candidateType;
+    private int candidateType;
 
     public Candidate() {
     }
 
-    public Candidate(int id, String firstName, String lastName, int birthDate, String address, String phone, String email, String candidateType) {
+    public Candidate(int id, String firstName,
+                     String lastName, int birthDate,
+                     String address, String phone,
+                     String email, int candidateType) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -80,11 +83,11 @@ public class Candidate {
         this.email = email;
     }
 
-    public String getCandidateType() {
+    public int getCandidateType() {
         return candidateType;
     }
 
-    public void setCandidateType(String candidateType) {
+    public void setCandidateType(int candidateType) {
         this.candidateType = candidateType;
     }
 }

@@ -5,10 +5,14 @@ public class InternCandidate extends Candidate{
     private String semesterName;
     private String universityName;
 
+    private InternCandidate() {
+
+    }
+
     public InternCandidate(int id, String firstName,
                            String lastName, int birthDate,
                            String address, String phone,
-                           String email, String candidateType,
+                           String email, int candidateType,
                            String majorsName, String semesterName,
                            String universityName) {
         super(id, firstName, lastName, birthDate, address, phone, email, candidateType);

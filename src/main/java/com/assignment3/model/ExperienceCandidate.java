@@ -4,10 +4,13 @@ public class ExperienceCandidate extends Candidate{
     private int yearExperience;
     private String proSkill;
 
+    public ExperienceCandidate() {
+    }
+
     public ExperienceCandidate(int id, String firstName,
                                String lastName, int birthDate,
                                String address, String phone,
-                               String email, String candidateType,
+                               String email, int candidateType,
                                int yearExperience, String proSkill) {
         super(id, firstName, lastName, birthDate, address, phone, email, candidateType);
         this.yearExperience = yearExperience;
