@@ -1,10 +1,12 @@
 package com.assignment3.utils;
 
-import java.util.ArrayList;
+import com.assignment3.model.Candidate;
+
 import java.util.Arrays;
 import java.util.List;
 
 public class Validator {
+
     public boolean validateDateOfBirth(int dateOfBirth) {
         if((dateOfBirth > 1900) && (dateOfBirth < 2020))
             return true;

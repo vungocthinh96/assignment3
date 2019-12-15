@@ -6,7 +6,8 @@ public class ValidatorTest {
 
     @Test
     public void testValidateDateOfBirth() {
-
+        Validator validator = new Validator();
+        assertEquals(true, validator.validateDateOfBirth(1996));
     }
 
     @Test

@@ -1,38 +1,52 @@
 package com.assignment3.controller;
 
-import com.assignment3.dao.CandidateFileDAOImpl;
+import com.assignment3.dao.CandidateDAOImpl;
 import com.assignment3.model.Candidate;
-import com.assignment3.model.Experience;
+import com.assignment3.utils.Validator;
+
+import java.util.List;
 
 public class MainController {
-    private InputReader inputReader;
-    private CandidateFileDAOImpl candidateFile;
+    private Validator validator;
+    private CandidateDAOImpl candidateDAO;
 
-    public MainController(InputReader inputReader, CandidateFileDAOImpl candidateFile) {
-        this.inputReader = inputReader;
-        this.candidateFile = candidateFile;
+    public MainController(Validator validator, CandidateDAOImpl candidateDAO) {
+        this.validator = validator;
+        this.candidateDAO = candidateDAO;
     }
 
-    public MainController() {
+    public Validator getValidator() {
+        return validator;
     }
 
-    public InputReader getInputReader() {
-        return inputReader;
+    public void setValidator(Validator validator) {
+        this.validator = validator;
     }
 
-    public void setInputReader(InputReader inputReader) {
-        this.inputReader = inputReader;
+    public CandidateDAOImpl getCandidateDAO() {
+        return candidateDAO;
     }
 
-    public CandidateFileDAOImpl getCandidateFile() {
-        return candidateFile;
+    public void setCandidateDAO(CandidateDAOImpl candidateDAO) {
+        this.candidateDAO = candidateDAO;
     }
 
-    public void setCandidateFile(CandidateFileDAOImpl candidateFile) {
-        this.candidateFile = candidateFile;
+    public int createCandidate(Candidate candidate) {
+        if(validateCandidate(candidate)) {
+            return candidateDAO.createCandidate(candidate);
+        }
+        return 0;
     }
 
-    public Candidate createCandidate() {
-        return new Experience();
+    public List<Candidate> searchCandidate(String name, int candidateType) {
+
+        return candidateDAO.searchCandidate(name, candidateType);
     }
+
+    public boolean validateCandidate(Candidate candidate) {
+        if(validator.validateDateOfBirth(candidate.getBirthDate()) && validator.validatePhone(candidate.getPhone()) && validator.validateEmail(candidate.getEmail()))
+            return true;
+        return false;
+    }
+
 }

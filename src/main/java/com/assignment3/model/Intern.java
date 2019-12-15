@@ -44,4 +44,9 @@ public class Intern extends Candidate{
     public void setUniversityName(String universityName) {
         this.universityName = universityName;
     }
+
+    @Override
+    public String toString() {
+        return super.toString() + "," + majorsName + "," + semesterName + "," + universityName;
+    }
 }

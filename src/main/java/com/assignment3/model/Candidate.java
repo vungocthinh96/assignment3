@@ -90,4 +90,9 @@ public class Candidate {
     public void setCandidateType(int candidateType) {
         this.candidateType = candidateType;
     }
+
+    @Override
+    public String toString() {
+        return id + " | " + firstName + " | " + lastName + " | " + birthDate + " | " + address + " | " + phone + " | " + email + " | " + candidateType;
+    }
 }

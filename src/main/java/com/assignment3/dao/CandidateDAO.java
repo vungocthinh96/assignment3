@@ -2,8 +2,10 @@ package com.assignment3.dao;
 
 import com.assignment3.model.Candidate;
 
+import java.util.List;
+
 public interface CandidateDAO {
-    Candidate getCandidates();
+    List<Candidate> getCandidates();
     int createCandidate(Candidate candidate);
-    Candidate searchCandidate(String name, int candidateType);
+    List<Candidate> searchCandidate(String name, int candidateType);
 }

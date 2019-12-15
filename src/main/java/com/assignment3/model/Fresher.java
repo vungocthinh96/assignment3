@@ -44,4 +44,9 @@ public class Fresher extends Candidate{
     public void setEducation(String education) {
         this.education = education;
     }
+
+    @Override
+    public String toString() {
+        return super.toString() + "," + graduateTime + "," + rankOfGraduation + "," + education;
+    }
 }

@@ -32,4 +32,9 @@ public class Experience extends Candidate{
     public void setProSkill(String proSkill) {
         this.proSkill = proSkill;
     }
+
+    @Override
+    public String toString() {
+        return super.toString() + "," + yearExperience + "," + proSkill;
+    }
 }
