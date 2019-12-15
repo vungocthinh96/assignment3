@@ -1,7 +1,5 @@
 package com.assignment3.utils;
 
-import com.assignment3.model.Candidate;
-
 import java.util.Arrays;
 import java.util.List;
 

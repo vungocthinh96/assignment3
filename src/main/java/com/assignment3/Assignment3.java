@@ -40,17 +40,17 @@ public class Assignment3 {
         MainController mainController = new MainController(new Validator(), new CandidateDAOImpl());
         InputReader inputReader = new InputReader(new Scanner(System.in));
         Assignment3 assignment3 = new Assignment3(inputReader, mainController);
-        while(true) {
+        while (true) {
             assignment3.run();
         }
     }
 
     public void run() {
-        System.out.println("================= CANDIDATE MANAGEMENT SYSTEM =================="+"\n" +"\n"+
-                "\t1. Experience"+"\n"+
-                "\t2. Fresher"+"\n"+
-                "\t3. InternShip"+"\n"+
-                "\t4. Searching"+"\n"+
+        System.out.println("================= CANDIDATE MANAGEMENT SYSTEM ==================" + "\n" + "\n" +
+                "\t1. Experience" + "\n" +
+                "\t2. Fresher" + "\n" +
+                "\t3. InternShip" + "\n" +
+                "\t4. Searching" + "\n" +
                 "\t5. Exit");
 
         try {
@@ -60,33 +60,39 @@ public class Assignment3 {
             Candidate candidate;
             switch (option) {
                 case 1:
-                    System.out.println("Experience");
-                    candidate = inputReader.readInput(option);
-                    int createExperience = mainController.createCandidate(candidate);
-                    break;
                 case 2:
-                    System.out.println("Fresher");
-                    candidate = inputReader.readInput(option);
-                    int createFresher = mainController.createCandidate(candidate);
-                    break;
                 case 3:
-                    System.out.println("InternShip");
-                    candidate = inputReader.readInput(option);
-                    int createIntership = mainController.createCandidate(candidate);
+                    while(true) {
+                        candidate = inputReader.readInput(option);
+                        int createExperience = mainController.createCandidate(candidate);
+                        if(createExperience == 0) {
+                            System.out.println("Error initializing candidate");
+                        } else {
+                            System.out.println("create success");
+                        }
+                        System.out.print("Do you want to continue (Y/N)?: ");
+                        String choose = scanner.next();
+                        if (!choose.equals("Y") && !choose.equals("y")) {
+                            for(Candidate candidate1: mainController.getCandidates()) {
+                                System.out.println(candidate1.toString());
+                            }
+                            break;
+                        }
+                    }
                     break;
                 case 4:
-                    System.out.println("Searching");
-                    System.out.println("Input Candidate name(First name or Last name): ");
-                    String name = scanner.nextLine();
-                    System.out.println("Input type of candidate: ");
+                    System.out.print("Input Candidate name(First name or Last name): ");
+                    String name = scanner.next();
+                    System.out.print("Input type of candidate: ");
                     int typeOfCandidate = scanner.nextInt();
                     List<Candidate> result = mainController.searchCandidate(name, typeOfCandidate);
-                    if(result == null) {
-                        return;
-                    } else {
-                        for(Candidate candidate1: result) {
+                    if (result.size() != 0) {
+                        for (Candidate candidate1 : result) {
                             System.out.println(candidate1.toString());
                         }
+                    }
+                    else {
+                        System.out.println("not found");
                     }
                     break;
                 case 5:
@@ -95,7 +101,7 @@ public class Assignment3 {
                 default:
                     System.out.println("You do not press one of three numbers: 1, 2, 3, 4, or 5".toUpperCase());
             }
-        }catch (InputMismatchException e) {
+        } catch (InputMismatchException e) {
             System.out.println("you must press a number".toUpperCase());
         }
     }

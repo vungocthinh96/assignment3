@@ -35,6 +35,6 @@ public class Experience extends Candidate{
 
     @Override
     public String toString() {
-        return super.toString() + "," + yearExperience + "," + proSkill;
+        return super.toString() + " | " + yearExperience + " | " + proSkill;
     }
 }

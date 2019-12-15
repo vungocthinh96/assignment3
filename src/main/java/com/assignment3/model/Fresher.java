@@ -47,6 +47,6 @@ public class Fresher extends Candidate{
 
     @Override
     public String toString() {
-        return super.toString() + "," + graduateTime + "," + rankOfGraduation + "," + education;
+        return super.toString() + " | " + graduateTime + " | " + rankOfGraduation + " | " + education;
     }
 }

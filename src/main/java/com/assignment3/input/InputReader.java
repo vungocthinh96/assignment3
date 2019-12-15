@@ -19,53 +19,53 @@ public class InputReader {
     public Candidate readInput(int option) {
         Candidate candidate = null;
         try {
-            System.out.print("First Name: ");
-            String firstName = scanner.nextLine();
+            System.out.print("First Name:");
+            String firstName = scanner.next();
 
-            System.out.print("Last Name: ");
-            String lastName = scanner.nextLine();
+            System.out.print("Last Name:");
+            String lastName = scanner.next();
 
-            System.out.print("Date Of Birth: ");
+            System.out.print("Date Of Birth:");
             int birthDate = scanner.nextInt();
 
-            System.out.print("Address: ");
-            String address = scanner.nextLine();
+            System.out.print("Address:");
+            String address = scanner.next();
 
-            System.out.print("Phone: ");
-            String phone = scanner.nextLine();
+            System.out.print("Phone:");
+            String phone = scanner.next();
 
-            System.out.print("Email: ");
-            String email = scanner.nextLine();
+            System.out.print("Email:");
+            String email = scanner.next();
 
             int candidateType = option - 1;
 
             if(candidateType == 0) {
-                System.out.print("Year Experience: ");
+                System.out.print("Year Experience:");
                 int yearExperience = scanner.nextInt();
-                System.out.print("Professional Skill: ");
-                String proSkill = scanner.nextLine();
+                System.out.print("Professional Skill:");
+                String proSkill = scanner.next();
                 candidate = new Experience(MockDatabase.candidates.size() + 1, firstName, lastName, birthDate, address, phone, email, candidateType, yearExperience, proSkill);
                 return candidate;
             }
 
             if(candidateType == 1) {
-                System.out.println("Graduate Time: ");
+                System.out.print("Graduate Time:");
                 int graduateTime = scanner.nextInt();
-                System.out.println("Rank Of Graduation: ");
-                String rankOfGraduation = scanner.nextLine();
-                System.out.println("Education: ");
-                String education = scanner.nextLine();
+                System.out.print("Rank Of Graduation:");
+                String rankOfGraduation = scanner.next();
+                System.out.print("Education:");
+                String education = scanner.next();
                 candidate = new Fresher(MockDatabase.candidates.size() + 1, firstName, lastName, birthDate, address, phone, email, candidateType, graduateTime, rankOfGraduation, education);
                 return candidate;
             }
 
             if(candidateType == 2) {
-                System.out.println("Majors Name: ");
-                String majorsName = scanner.nextLine();
-                System.out.println("Semester Name: ");
-                String semesterName = scanner.nextLine();
-                System.out.println("University Name: ");
-                String universityName = scanner.nextLine();
+                System.out.print("Majors Name:");
+                String majorsName = scanner.next();
+                System.out.print("Semester Name:");
+                String semesterName = scanner.next();
+                System.out.print("University Name:");
+                String universityName = scanner.next();
                 candidate = new Intern(MockDatabase.candidates.size() + 1, firstName, lastName, birthDate, address, phone, email, candidateType, majorsName, semesterName, universityName);
                 return candidate;
             }

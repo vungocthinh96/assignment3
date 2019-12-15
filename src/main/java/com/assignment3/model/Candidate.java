@@ -93,6 +93,6 @@ public class Candidate {
 
     @Override
     public String toString() {
-        return id + " | " + firstName + " | " + lastName + " | " + birthDate + " | " + address + " | " + phone + " | " + email + " | " + candidateType;
+        return firstName + " | " + lastName + " | " + birthDate + " | " + address + " | " + phone + " | " + email + " | " + candidateType;
     }
 }
