@@ -1,18 +1,18 @@
 package com.assignment3.model;
 
-public class FresherCandidate extends Candidate{
+public class Fresher extends Candidate{
     private int graduateTime;
     private String rankOfGraduation;
     private String education;
 
-    public FresherCandidate() {
+    public Fresher() {
     }
 
-    public FresherCandidate(int id, String firstName,
-                            String lastName, int birthDate,
-                            String address, String phone,
-                            String email, int candidateType,
-                            int graduateTime, String
+    public Fresher(int id, String firstName,
+                   String lastName, int birthDate,
+                   String address, String phone,
+                   String email, int candidateType,
+                   int graduateTime, String
                                     rankOfGraduation, String education) {
         super(id, firstName, lastName, birthDate, address, phone, email, candidateType);
         this.graduateTime = graduateTime;

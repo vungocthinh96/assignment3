@@ -1,14 +1,14 @@
 package com.assignment3.controller;
 
-import com.assignment3.dao.CandidateFileImpl;
+import com.assignment3.dao.CandidateFileDAOImpl;
 import com.assignment3.model.Candidate;
-import com.assignment3.model.ExperienceCandidate;
+import com.assignment3.model.Experience;
 
 public class MainController {
     private InputReader inputReader;
-    private CandidateFileImpl candidateFile;
+    private CandidateFileDAOImpl candidateFile;
 
-    public MainController(InputReader inputReader, CandidateFileImpl candidateFile) {
+    public MainController(InputReader inputReader, CandidateFileDAOImpl candidateFile) {
         this.inputReader = inputReader;
         this.candidateFile = candidateFile;
     }
@@ -24,15 +24,15 @@ public class MainController {
         this.inputReader = inputReader;
     }
 
-    public CandidateFileImpl getCandidateFile() {
+    public CandidateFileDAOImpl getCandidateFile() {
         return candidateFile;
     }
 
-    public void setCandidateFile(CandidateFileImpl candidateFile) {
+    public void setCandidateFile(CandidateFileDAOImpl candidateFile) {
         this.candidateFile = candidateFile;
     }
 
     public Candidate createCandidate() {
-        return new ExperienceCandidate();
+        return new Experience();
     }
 }

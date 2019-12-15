@@ -1,4 +1,6 @@
-package com.assignment3.controller;
+package com.assignment3;
+
+import com.assignment3.controller.MainController;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
