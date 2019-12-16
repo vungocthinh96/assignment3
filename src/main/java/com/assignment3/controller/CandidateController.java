@@ -1,35 +1,20 @@
 package com.assignment3.controller;
 
+import com.assignment3.dao.CandidateDAO;
 import com.assignment3.dao.CandidateDAOImpl;
 import com.assignment3.model.Candidate;
 import com.assignment3.model.Experience;
 import com.assignment3.model.Fresher;
-import com.assignment3.utils.Validator;
+import com.assignment3.validator.Validator;
 
 import java.util.List;
 
-public class MainController {
+public class CandidateController {
     private Validator validator;
-    private CandidateDAOImpl candidateDAO;
+    private CandidateDAO candidateDAO;
 
-    public MainController(Validator validator, CandidateDAOImpl candidateDAO) {
+    public CandidateController(Validator validator, CandidateDAOImpl candidateDAO) {
         this.validator = validator;
-        this.candidateDAO = candidateDAO;
-    }
-
-    public Validator getValidator() {
-        return validator;
-    }
-
-    public void setValidator(Validator validator) {
-        this.validator = validator;
-    }
-
-    public CandidateDAOImpl getCandidateDAO() {
-        return candidateDAO;
-    }
-
-    public void setCandidateDAO(CandidateDAOImpl candidateDAO) {
         this.candidateDAO = candidateDAO;
     }
 

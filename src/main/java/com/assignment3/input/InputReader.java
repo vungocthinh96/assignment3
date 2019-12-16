@@ -1,11 +1,7 @@
 package com.assignment3.input;
 
 import com.assignment3.database.MockDatabase;
-import com.assignment3.model.Candidate;
-import com.assignment3.model.Experience;
-import com.assignment3.model.Fresher;
-import com.assignment3.model.Intern;
-
+import com.assignment3.model.*;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -14,6 +10,39 @@ public class InputReader {
 
     public InputReader(Scanner scanner) {
         this.scanner = scanner;
+    }
+
+    public Scanner getScanner() {
+        return scanner;
+    }
+
+    public void setScanner(Scanner scanner) {
+        this.scanner = scanner;
+    }
+
+    public int readOption() {
+        int option = 0;
+        try {
+            System.out.print("Please choose a option: ");
+            option = scanner.nextInt();
+        } catch (InputMismatchException e) {
+            System.out.println("you must press a number".toUpperCase());
+        }
+        return option;
+    }
+
+    public Seeker readSeeker() {
+        Seeker seeker = null;
+        try {
+            System.out.print("Input Candidate name(First name or Last name): ");
+            String name = scanner.next();
+            System.out.print("Input type of candidate: ");
+            int typeOfCandidate = scanner.nextInt();
+            seeker = new Seeker(name, typeOfCandidate);
+        } catch (InputMismatchException e) {
+            System.out.println(e.getMessage());
+        }
+        return seeker;
     }
 
     public Candidate readInput(int option) {
@@ -76,5 +105,15 @@ public class InputReader {
             System.out.println("Enter the wrong data type");;
         }
         return candidate;
+    }
+
+    public String getChoice() {
+        String choice = "";
+        try {
+            choice = scanner.next();
+        } catch (InputMismatchException e) {
+            System.out.println(e.getMessage());
+        }
+        return choice;
     }
 }

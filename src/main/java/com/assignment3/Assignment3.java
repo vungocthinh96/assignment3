@@ -1,10 +1,11 @@
 package com.assignment3;
 
-import com.assignment3.controller.MainController;
+import com.assignment3.controller.CandidateController;
 import com.assignment3.dao.CandidateDAOImpl;
 import com.assignment3.input.InputReader;
 import com.assignment3.model.Candidate;
-import com.assignment3.utils.Validator;
+import com.assignment3.model.Seeker;
+import com.assignment3.validator.Validator;
 
 import java.util.InputMismatchException;
 import java.util.List;
@@ -12,11 +13,11 @@ import java.util.Scanner;
 
 public class Assignment3 {
     private InputReader inputReader;
-    private MainController mainController;
+    private CandidateController candidateController;
 
-    public Assignment3(InputReader inputReader, MainController mainController) {
+    public Assignment3(InputReader inputReader, CandidateController candidateController) {
         this.inputReader = inputReader;
-        this.mainController = mainController;
+        this.candidateController = candidateController;
     }
 
     public InputReader getInputReader() {
@@ -27,19 +28,19 @@ public class Assignment3 {
         this.inputReader = inputReader;
     }
 
-    public MainController getMainController() {
-        return mainController;
+    public CandidateController getCandidateController() {
+        return candidateController;
     }
 
-    public void setMainController(MainController mainController) {
-        this.mainController = mainController;
+    public void setCandidateController(CandidateController candidateController) {
+        this.candidateController = candidateController;
     }
 
     public static void main(String[] args) {
 
-        MainController mainController = new MainController(new Validator(), new CandidateDAOImpl());
+        CandidateController candidateController = new CandidateController(new Validator(), new CandidateDAOImpl());
         InputReader inputReader = new InputReader(new Scanner(System.in));
-        Assignment3 assignment3 = new Assignment3(inputReader, mainController);
+        Assignment3 assignment3 = new Assignment3(inputReader, candidateController);
         while (true) {
             assignment3.run();
         }
@@ -54,26 +55,24 @@ public class Assignment3 {
                 "\t5. Exit");
 
         try {
-            Scanner scanner = new Scanner(System.in);
-            System.out.print("Please choose a option: ");
-            int option = scanner.nextInt();
+            int option = inputReader.readOption();
             Candidate candidate;
             switch (option) {
                 case 1:
                 case 2:
                 case 3:
-                    while(true) {
+                    while (true) {
                         candidate = inputReader.readInput(option);
-                        int createExperience = mainController.createCandidate(candidate);
-                        if(createExperience == 0) {
+                        int statusCreateExperience = candidateController.createCandidate(candidate);
+                        if (statusCreateExperience == 0) {
                             System.out.println("Error initializing candidate");
                         } else {
                             System.out.println("create success");
                         }
                         System.out.print("Do you want to continue (Y/N)?: ");
-                        String choose = scanner.next();
+                        String choose = inputReader.getChoice();
                         if (!choose.equals("Y") && !choose.equals("y")) {
-                            for(Candidate candidate1: mainController.getCandidates()) {
+                            for (Candidate candidate1 : candidateController.getCandidates()) {
                                 System.out.println(candidate1.toString());
                             }
                             break;
@@ -81,18 +80,18 @@ public class Assignment3 {
                     }
                     break;
                 case 4:
-                    System.out.print("Input Candidate name(First name or Last name): ");
-                    String name = scanner.next();
-                    System.out.print("Input type of candidate: ");
-                    int typeOfCandidate = scanner.nextInt();
-                    List<Candidate> result = mainController.searchCandidate(name, typeOfCandidate);
-                    if (result.size() != 0) {
-                        for (Candidate candidate1 : result) {
-                            System.out.println(candidate1.toString());
+                    Seeker seeker = inputReader.readSeeker();
+                    try {
+                        List<Candidate> result = candidateController.searchCandidate(seeker.getName(), seeker.getTypeOfCandidate());
+                        if (result.size() != 0) {
+                            for (Candidate candidate1 : result) {
+                                System.out.println(candidate1.toString());
+                            }
+                        } else {
+                            System.out.println("not found");
                         }
-                    }
-                    else {
-                        System.out.println("not found");
+                    } catch (NullPointerException e) {
+                        System.out.println(e.getMessage());
                     }
                     break;
                 case 5:

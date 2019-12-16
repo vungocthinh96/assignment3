@@ -1,4 +1,4 @@
-package com.assignment3.utils;
+package com.assignment3.validator;
 
 import java.util.Arrays;
 import java.util.List;
